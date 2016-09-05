@@ -1,0 +1,45 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="JiraReqTemp"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="JiraReqTemp-resources" name="JiraReqTemp Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="JiraReqTemp.css" location="/css/JiraReqTemp.css"/>
+        <resource type="download" name="JiraReqTemp.js" location="/js/JiraReqTemp.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>JiraReqTemp</context>
+    </web-resource>
+
+
+    <!-- Template for Blueprint -->
+    <content-template key="JiraReqTemp-template" template-title-key="my.blueprint.title">
+        <resource name="template" type="download" location="/templates/mytemplate.xml" />
+    </content-template>
+
+    <!-- Add to the Create Menu -->
+    <web-item key="create-by-sample-template" i18n-name-key="my.create-link.title" section="system.create.dialog/content">
+        <description key="my.create-link.description" />
+        <resource name="icon" type="download" location="/images/myblueprint.png" />
+        <param name="blueprintKey" value="my-blueprint" />
+    </web-item>
+
+
+    <!-- Blueprint -->
+    <blueprint key="my-blueprint" content-template-key="JiraReqTemp-template" index-key="my-index" />
+
+
+    <!-- import from the product container -->
+    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties" />
+
+</atlassian-plugin>
