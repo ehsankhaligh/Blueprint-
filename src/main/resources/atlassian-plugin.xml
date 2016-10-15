@@ -1,4 +1,4 @@
-<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
     <plugin-info>
         <description>${project.description}</description>
         <version>${project.version}</version>
@@ -9,11 +9,11 @@
 
     <!-- add our i18n resource -->
     <resource type="i18n" name="i18n" location="JiraReqTemp"/>
-    
+
     <!-- add our web resources -->
     <web-resource key="JiraReqTemp-resources" name="JiraReqTemp Web Resources">
         <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
+
         <resource type="download" name="JiraReqTemp.css" location="/css/JiraReqTemp.css"/>
         <resource type="download" name="JiraReqTemp.js" location="/js/JiraReqTemp.js"/>
         <resource type="download" name="images/" location="/images"/>
